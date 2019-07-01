@@ -1,0 +1,95 @@
+<Scell name="Brown2004">
+    <References>
+        <SBML path="./Example/gutenkunst2007/Brown_2004_All_One/BIOMD0000000033.xml" />
+    </References>
+    <Networks>
+        <Network compile="True" from_file="True" id="base">
+            <Set_Typical>
+                <var id="all" value="1" />
+            </Set_Typical>
+            <Set_Initial>
+                <var condition="!=0" id="all" value="1" />
+                <var id="EGF" value="0" />
+                <var id="NGF" value="0" />
+            </Set_Initial>
+        </Network>
+        <Network copy="base" id="EGF-stim">
+            <Set_Initial>
+                <var id="EGF" value="1" />
+            </Set_Initial>
+        </Network>
+        <Network copy="base" id="NGF-stim">
+            <Set_Initial>
+                <var id="NGF" value="1" />
+            </Set_Initial>
+        </Network>
+        <Network copy="EGF-stim" id="EGF-LY">
+            <Set_Initial>
+                <var id="kPI3KRas" value="0" />
+                <var id="kPI3K" value="0" />
+            </Set_Initial>
+            <Set_Optimizable>
+                <var id="kPI3KRas" is_optimizable="False" />
+                <var id="kPI3K" is_optimizable="False" />
+            </Set_Optimizable>
+        </Network>
+        <Network copy="NGF-stim" id="NGF-LY">
+            <Set_Initial>
+                <var id="kPI3KRas" value="0" />
+                <var id="kPI3K" value="0" />
+            </Set_Initial>
+            <Set_Optimizable>
+                <var id="kPI3KRas" is_optimizable="False" />
+                <var id="kPI3K" is_optimizable="False" />
+            </Set_Optimizable>
+        </Network>
+        <Network copy="NGF-stim" id="NGF-DN-Rap1">
+            <Set_Initial>
+                <var id="kRap1ToBRaf" value="0" />
+            </Set_Initial>
+            <Set_Optimizable>
+                <var id="kRap1ToBRaf" is_optimizable="False" />
+            </Set_Optimizable>
+        </Network>
+        <Network copy="NGF-stim" id="NGF-DN-Ras">
+            <Set_Initial>
+                <var id="kRasToRaf1" value="0" />
+                <var id="kPI3KRas" value="0" />
+            </Set_Initial>
+            <Set_Optimizable>
+                <var id="kRasToRaf1" is_optimizable="False" />
+                <var id="kPI3KRas" is_optimizable="False" />
+            </Set_Optimizable>
+        </Network>
+    </Networks>
+    <Actions>
+        <Trajectory>
+            <Graph>
+                <traj net="EGF-stim" upper_bound="120">
+                        <var id="ErkActive" />
+                </traj>
+                <traj net="NGF-stim" upper_bound="120">
+                        <var id="ErkActive" />
+                </traj>
+            </Graph>
+            <Graph>
+                <traj net="EGF-LY" upper_bound="120">
+                    <subplot>
+                        <var id="ErkActive" />
+                    </subplot>
+                </traj>
+                <traj net="NGF-LY" upper_bound="120">
+                    <var id="ErkActive" />
+                </traj>
+                <traj net="NGF-DN-Rap1" upper_bound="120">
+                    <subplot>
+                         <var id="ErkActive" />
+                    </subplot>
+                </traj>
+                <traj net="NGF-DN-Ras" upper_bound="120">
+                    <var id="ErkActive" />
+                </traj>
+            </Graph>
+        </Trajectory>
+    </Actions>
+</Scell>

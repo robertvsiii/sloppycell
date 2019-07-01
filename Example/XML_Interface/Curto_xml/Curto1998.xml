@@ -1,0 +1,31 @@
+<Scell name="Curto1998">
+    <References>
+        <SBML path="./Example/gutenkunst2007/Curto_1998/BIOMD0000000015.xml" />
+    </References>
+    <Networks>
+        <Network from_file="True" id="base">
+
+        </Network>
+        <Network copy="base" id="prpp">
+            <Set_Initial>
+                <var condition="*10" id="PRPP" />
+            </Set_Initial>
+        </Network>
+    </Networks>
+    <Actions>
+        <Trajectory>
+            <Graph>
+                <traj net="prpp" upper_bound="70">
+                    <subplot>
+                        <var id="IMP" />
+                    </subplot>
+                    <subplot>
+                        <var id="HX" />
+                    </subplot>
+
+                </traj>
+            </Graph>
+        </Trajectory>
+    </Actions>
+
+</Scell>

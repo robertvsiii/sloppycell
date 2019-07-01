@@ -1,0 +1,43 @@
+<Scell name="Anvin2017">
+    <References>
+        <SBML path="./Example/Anvin_2017/Updated_LOV_zdk.xml" />
+        <Data path="./Example/Anvin_2017/VCell_data_scaled.csv" />
+    </References>
+    <Networks>
+        <Network from_file="true" id="base" />
+    </Networks>
+
+    <Actions>
+        <Optimization initial_cost="True" plot_after="True" plot_before="True">
+            <opt maxiter="60" type="Levenburg-Marquardt" />
+        </Optimization>
+        <Trajectory>
+            <Graph>
+                <traj net="base" upper_bound="25">
+                    <subplot>
+                        <var id="Li" />
+                        <var id="La" />
+                    </subplot>
+                    <subplot>
+                        <var id="LiZ" />
+                        <var id="LaZ" />
+                    </subplot>
+
+
+                </traj>
+            </Graph>
+        </Trajectory>
+        <Ensemble autocorrelate="True" max_run_hours=".1666666" prune="10" steps="5000">
+
+        </Ensemble>
+        <EnsembleTrajectories points="200" time="30">
+            <Variables>
+                <Graph>
+                    <species id="Li" />
+                    <species id="La" />
+                </Graph>
+            </Variables>
+        </EnsembleTrajectories>
+
+    </Actions>
+</Scell>

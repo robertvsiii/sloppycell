@@ -1,0 +1,23 @@
+<Scell name="Goldbeter1991">
+    <References>
+        <SBML path="./Example/gutenkunst2007/Goldbeter_1991/BIOMD0000000003.xml" />
+
+    </References>
+    <Networks>
+        <Network compile="True" from_file="True" id="base" />
+    </Networks>
+    <Actions>
+        <Trajectory>
+            <Graph>
+                <traj net="base" upper_bound="100">
+                    <subplot>
+                        <var id="X" />
+                        <var id="C" />
+                        <var id="M" />
+                    </subplot>
+
+                </traj>
+            </Graph>
+        </Trajectory>
+    </Actions>
+</Scell>
